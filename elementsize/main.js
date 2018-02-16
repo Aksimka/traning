@@ -1,28 +1,28 @@
 $(document).ready(function(){
 	var slideFlag = 0;
 	var heights = [];
+	var i
 	$('.btn').on('click', function(){
-		var max = 0; 
+		max = 0; 
 		if(slideFlag == 0){
-			for(var i = 0; i < 5; i++){
-				if($('.item')[i].clientHeight > max) {
-					max = $('.item')[i].clientHeight; 
+			$('.item').each(function(i, elem){
+				if($(this).height() > max) {
+					max = $(this).height(); 
 				}
-				heights[i] = $('.item')[i].clientHeight;
-				console.log(heights[i]);
-			}
-			$('.item').animate({height: max},3000);
+				if(heights[i] == null){
+					heights[i] = $(this).height()
+				}
+			})
+			$('.item').stop().animate({height: max},500);
 			slideFlag = 1;
 		}
 
-
 		else if(slideFlag == 1){
-
-			$.each($('.item'), function(){
-				$(this).animate({height: heights},3000);
+			$('.item').each(function(i, elem){
+				$(this).stop().animate({height: heights[i]},500);
+				console.log(heights[i])
 			})
 			slideFlag = 0;
 		}
-		
 	})
 });
