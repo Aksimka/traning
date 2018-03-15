@@ -42,7 +42,7 @@
 .left{
 	width: 80%;
 	background: #FFF;
-	height: 400px;
+	height: 80%;
 	position: absolute;
 	right: 10px;
 	bottom: 50px;
@@ -50,7 +50,7 @@
 .right{
 	width: 80%;
 	background: #FFF;
-	height: 400px;
+	height: 80%;
 	position: absolute;
 	left: 10px;
 	bottom: 50px;
