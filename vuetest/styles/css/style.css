@@ -56,6 +56,58 @@ body{
     padding: 70px 40px 0;
 }
 
+.lesson-more{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 40px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lesson-more__top{
+    width: 100%;
+    font-size: 20px;
+}
+
+.lesson-more__content{
+    font-size: 13px;
+    line-height: 21px;
+}
+
+.lesson-more__bottom{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.lesson-more__back{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 25px;
+    color: #3EAFEE;
+    cursor: pointer;
+}
+
+.lesson-more__name{
+    font-size: 18px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.lesson-more__img{
+    border-radius: 50%;
+}
+
 .overlay-locker{
     font-size: 25px;
 }

@@ -22,6 +22,7 @@ new Vue({
                     return 100/this.questions;
                 },
                 progress: 0,
+                blur: false,
                 progressColor: function () {
                     if(this.progress <25){
                         return '#ff958c';
@@ -41,7 +42,7 @@ new Vue({
                         return 'Ongoing...'
                     }
                     else if(this.progress > 99){
-                        return 'finished'
+                        return 'Finished'
                     }
                 },
                 statusColor: function () {
@@ -51,7 +52,8 @@ new Vue({
                     else if(this.progress > 99){
                         return '#a1ff85';
                     }
-                }
+                },
+                more: false
 
             },
             {
@@ -74,6 +76,7 @@ new Vue({
                   return 100/this.questions;
                 },
                 progress: 0,
+                blur: true,
                 progressColor: function () {
                     if(this.progress <25){
                         return '#ff958c';
@@ -93,7 +96,7 @@ new Vue({
                         return 'Ongoing...'
                     }
                     else if(this.progress > 99){
-                        return 'finished'
+                        return 'Finished'
                     }
                 },
                 statusColor: function () {
@@ -103,7 +106,8 @@ new Vue({
                     else if(this.progress > 99){
                         return '#a1ff85';
                     }
-                }
+                },
+                more: false
             },
             {
                 id: 2,
@@ -125,6 +129,7 @@ new Vue({
                     return 100/this.questions;
                 },
                 progress: 0,
+                blur: true,
                 progressColor: function () {
                     if(this.progress <25){
                         return '#ff958c';
@@ -144,7 +149,7 @@ new Vue({
                         return 'Ongoing...'
                     }
                     else if(this.progress > 99){
-                        return 'finished'
+                        return 'Finished'
                     }
                 },
                 statusColor: function () {
@@ -154,7 +159,8 @@ new Vue({
                     else if(this.progress > 99){
                         return '#a1ff85';
                     }
-                }
+                },
+                more: false
             }
 
         ]
@@ -181,12 +187,24 @@ new Vue({
                 this.lessons[id].progress = pro + step;
                 if(this.lessons[id].progress >= 99){
                     this.lessons[id+1].disabled = false;
+                    this.lessons[id+1].blur = false;
                 }
                 return pro;
             }
             else{
                 return 100;
             }
-         }
+         },
+        more: function (id) {
+            var item = this.lessons[id];
+            if(item.more === false){
+                item.more = this.lessons[id].more = true;
+                item.blur = this.lessons[id].blur = true;
+            }
+            else{
+                item.more = this.lessons[id].more = false;
+                item.blur = this.lessons[id].blur = false;
+            }
+        }
     }
 });

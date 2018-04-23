@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">-->
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="styles/css/style.css">
 </head>
@@ -17,7 +17,16 @@
                         <p class="lesson-overlay__text">Извините, но данный урок для вас закрыт. Для разблокировки вам необходимо пройти предыдыдущий. Мы ждем вас!</p>
                     </div>
                 </div>
-                <div class="lesson-item__header" :class="{blur: item.disabled}">
+                <div class="lesson-more" v-if="item.more">
+                    <div class="lesson-more__top">{{item.name}}</div>
+                    <div class="lesson-more__content">{{item.description}}</div>
+                    <div class="lesson-more__bottom">
+                        <a :href="item.author.url" class="lesson-more__name"> {{item.author.nick}}</a>
+                        <img class="lesson-more__img" :src="item.author.pic">
+                    </div>
+                    <i class="ion-arrow-left-c begin lesson-more__back" @click="more(item.id)"></i>
+                </div>
+                <div class="lesson-item__header" :class="{blur: item.blur}">
                     <img :src="item.bg" class="lesson-item__img" alt="">
                     <span class="lesson-item__like" @click="isLiked(item.id)">
                         <transition name="fade">
@@ -30,15 +39,15 @@
                         <div class="lesson-item__inner" :style="{ width: item.progress + '%', background: item.progressColor() }"></div>
                     </div>
                 </div>
-                <div class="lesson-item__content" :class="{blur: item.disabled}">
+                <div class="lesson-item__content" :class="{blur: item.blur}">
 
                     <div class="lesson-item__name">{{item.name}}</div>
                     <div class="lesson-item__description">{{item.description | cutting}}</div>
                 </div>
-                <div class="lesson-item__footer" :class="{blur: item.disabled}">
+                <div class="lesson-item__footer" :class="{blur: item.blur}">
                     <span class="lesson-item__views"><i class="ion-eye"></i> {{item.views}}</span>
                     <div class="lesson-item__wrapper">
-                        <div class="lesson-item__more"><i class="ion-ios-book-outline more"></i></div>
+                        <div class="lesson-item__more" @click="more(item.id)"><i class="ion-ios-book-outline more"></i></div>
                         <div class="lesson-item__begin" @click="progress(item.id)"><i class="ion-arrow-right-c begin"></i></div>
                     </div>
                 </div>
